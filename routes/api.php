@@ -25,4 +25,4 @@ Route::post("/setWebhook",[BotController::class,'setWebhook']);
 
 Route::post("/bot",[BotController::class,'index']);
 
-Route::post('/setWebhook',action: [ChatwootApiController::class, 'index']);
+// Route::post('/setWebhook',action: [ChatwootApiController::class, 'index']);
