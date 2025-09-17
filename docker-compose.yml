@@ -30,8 +30,6 @@ services:
     volumes:
       - chayleap_pgdata:/var/lib/postgresql/data
 
-
-
   mailpit:
     image: axllent/mailpit
     container_name: mailpit
@@ -41,4 +39,4 @@ services:
       - "8025:8025" # Web UI
 
 volumes:
-  pgdata:
+  chayleap_pgdata:
