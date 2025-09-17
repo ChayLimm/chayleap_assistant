@@ -42,7 +42,7 @@ class BotController extends Controller
 
   public function setWebhook(){
     $bot_token = env('BOT_TOKEN');
-    $url_hook = "https://mustang-tidy-usefully.ngrok-free.app/api/bot";
+    $url_hook = env('URL_HOOK');
     $url = "https://api.telegram.org/bot{$bot_token}/setWebhook?url={$url_hook}";
 
     $resposne = Http::post($url);
