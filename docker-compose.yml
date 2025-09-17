@@ -10,12 +10,14 @@ services:
     env_file:
       - .env
     volumes:
-      - ./:/var/www/html
+      - app_data:/var/www/html  # Changed from bind mount to named volume
     ports:
       - "9000:9000"
     depends_on:
       - db
       - mailpit
+    networks:
+      - chayleap_network  # Added network
 
   db:
     image: postgres:15
@@ -29,6 +31,8 @@ services:
       - "5434:5432"
     volumes:
       - chayleap_pgdata:/var/lib/postgresql/data
+    networks:
+      - chayleap_network  # Added network
 
   mailpit:
     image: axllent/mailpit
@@ -37,6 +41,13 @@ services:
     ports:
       - "1025:1025" # SMTP
       - "8025:8025" # Web UI
+    networks:
+      - chayleap_network  # Added network
+
+networks:
+  chayleap_network:
+    driver: bridge
 
 volumes:
   chayleap_pgdata:
+  app_data:  # Added named volume for app
